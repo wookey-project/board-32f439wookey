@@ -1,0 +1,536 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# Wookey configuration
+#
+
+#
+# General Setup
+#
+CONFIG_PROJ_NAME="wookey"
+CONFIG_PROJ_FILES="."
+CONFIG_BIN_NAME="$(CONFIG_PROJ_NAME).bin"
+CONFIG_HEX_NAME="$(CONFIG_PROJ_NAME).hex"
+CONFIG_ELF_NAME="$(CONFIG_PROJ_NAME).elf"
+CONFIG_BUILD_DIR="build"
+CONFIG_PRIVATE_DIR="private"
+CONFIG_CROSS_COMPILE="arm-none-eabi-"
+CONFIG_ADA_RUNTIME="/opt/adacore-arm-eabi"
+CONFIG_ST_FLASH="../stlink/build/st-flash"
+CONFIG_ST_UTIL="../stlink/build/st-util"
+
+#
+# Micro-Kernel configuration
+#
+
+#
+# Board Support Package
+#
+
+#
+# Board setup
+#
+# CONFIG_DISCO407 is not set
+# CONFIG_DISCO429 is not set
+CONFIG_WOOKEY=y
+CONFIG_RAM_SLOT_SIZE=16384
+
+#
+# SoC and Core setup
+#
+CONFIG_STM32F4=y
+# CONFIG_STM32F407 is not set
+# CONFIG_STM32F429 is not set
+CONFIG_STM32F439=y
+# CONFIG_FPU_ENABLE is not set
+CONFIG_CORE_FREQUENCY=168000
+CONFIG_ARCH_ARMV7M=y
+CONFIG_ARCH_CORTEX_M4=y
+# CONFIG_ARCH_CORTEX_M3 is not set
+CONFIG_ARCH="armv7-m"
+CONFIG_ADA_ARCH="arm-eabi"
+CONFIG_ADA_PROFILE="zfp-stm32f4"
+CONFIG_BOARDNAME="wookey"
+CONFIG_SOCNAME="stm32f439"
+CONFIG_CORENAME="cortex-m4"
+CONFIG_MAXTASKS=8
+CONFIG_AFLAGS="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
+CONFIG_ADAKERNEL=y
+CONFIG_KERNEL_CONSOLE_USART1=y
+# CONFIG_KERNEL_CONSOLE_USART6 is not set
+CONFIG_KERNEL_USART=1
+CONFIG_KERNEL_CONSOLE_TXT=y
+# CONFIG_KERNEL_LED is not set
+CONFIG_KERNEL_DMA_ENABLE=y
+CONFIG_KERNEL_GETCYCLES=y
+# CONFIG_KERNEL_DOMAIN is not set
+# CONFIG_KERNEL_SYSCALLS_IN_IRQ is not set
+CONFIG_KERNEL_SYSCALLS_WISE_REPARTITION=y
+# CONFIG_KERNEL_SYSCALLS_IN_SOFTIRQ is not set
+
+#
+# Scheduling schemes
+#
+# CONFIG_SCHED_RR is not set
+CONFIG_SCHED_MLQ_RR=y
+# CONFIG_SCHED_RAND is not set
+CONFIG_SCHED_PERIOD=10
+# CONFIG_SCHED_SUPPORT_FIPC is not set
+CONFIG_ISR_REACTIVITY=y
+# CONFIG_KERN_OPTIM_NONE is not set
+# CONFIG_KERN_OPTIM_O1 is not set
+# CONFIG_KERN_OPTIM_O2 is not set
+# CONFIG_KERN_OPTIM_O3 is not set
+CONFIG_KERN_OPTIM_OS=y
+CONFIG_KERN_CFLAGS="-Os"
+
+#
+# Kernel hacking
+#
+CONFIG_DBGLEVEL=6
+CONFIG_DEBUG=y
+CONFIG_KERNEL_SCHED_DEBUG=y
+CONFIG_KERNEL_SCHED_DEBUG_BUFSIZE=1000
+CONFIG_KERNEL_EXPERT_MODE=y
+CONFIG_KERNEL_EWOK=y
+
+#
+# Userspace drivers and features
+#
+
+#
+# Userspace drivers library pool
+#
+CONFIG_USR_DRV_USB=y
+CONFIG_USR_DRV_USB_CFLAGS=" -I../../drivers/socs/stm32f439/usb/api "
+
+#
+# USB-related features
+#
+CONFIG_USR_DRV_USB_FS=y
+# CONFIG_USR_DRV_USB_HS is not set
+CONFIG_USB_DFU=y
+CONFIG_USB_DEV_PRODNAME="goodusb"
+CONFIG_USB_DEV_PRODNAME_INDEX=1
+CONFIG_USB_DEV_MANUFACTURER="ANSSI"
+CONFIG_USB_DEV_MANUFACTURER_INDEX=2
+CONFIG_USB_DEV_SERIAL="123456789012345678901234"
+CONFIG_USB_DEV_SERIAL_INDEX=3
+CONFIG_USB_DEV_VENDORID=0xDEAD
+CONFIG_USB_DEV_PRODUCTID=0xCAFE
+CONFIG_USR_DRV_USART=y
+CONFIG_USR_DRV_USART_CFLAGS=" -I../../drivers/socs/stm32f439/usart/api "
+CONFIG_USR_DRV_SMARTCARD=y
+CONFIG_USR_DRV_SMARTCARD_CFLAGS=" -I../../drivers/socs/stm32f439/smartcard/api "
+CONFIG_USR_DRV_RNG=y
+# CONFIG_USR_DRV_RNG_DEBUG is not set
+CONFIG_USR_DRV_RNG_CFLAGS=" -I../../drivers/socs/stm32f439/rng/api "
+CONFIG_USR_DRV_SDIO=y
+CONFIG_USR_DRV_SDIO_CFLAGS=" -I../../drivers/socs/stm32f439/sdio/api "
+CONFIG_USR_DRV_DMA=y
+CONFIG_USR_DRV_DMA_CFLAGS=" -I../../drivers/socs/stm32f439/dma/api "
+CONFIG_USR_DRV_CRYP=y
+# CONFIG_USR_DRV_CRYP_DEBUG is not set
+CONFIG_USR_DRV_CRYP_CFLAGS=" -I../../drivers/socs/stm32f439/cryp/api "
+CONFIG_DRV_CFLAGS=" $(CONFIG_USR_DRV_USB_CFLAGS) $(CONFIG_USR_DRV_USART_CFLAGS) $(CONFIG_USR_DRV_SMARTCARD_CFLAGS) $(CONFIG_USR_DRV_RNG_CFLAGS) $(CONFIG_USR_DRV_SDIO_CFLAGS) $(CONFIG_USR_DRV_DMA_CFLAGS) $(CONFIG_USR_DRV_CRYP_CFLAGS)"
+# CONFIG_DRV_OPTIM_NONE is not set
+# CONFIG_DRV_OPTIM_PERF1 is not set
+# CONFIG_DRV_OPTIM_PERF2 is not set
+# CONFIG_DRV_OPTIM_PERF3 is not set
+CONFIG_DRV_OPTIM_SIZE=y
+CONFIG_DRIVERS_CFLAGS="-Os"
+
+#
+# Userspace utility libraries
+#
+CONFIG_USR_LIB_CONSOLE=y
+CONFIG_USR_LIB_CONSOLE_CFLAGS=" -I../../libs/console/api "
+CONFIG_USR_LIB_SHELL=y
+CONFIG_USR_LIB_SHELL_CFLAGS=" -I../../libs/shell/api "
+CONFIG_USR_LIB_HMAC=y
+CONFIG_USR_LIB_HMAC_CFLAGS=" -I../../libs/hmac "
+CONFIG_USR_LIB_MASSSTORAGE=y
+CONFIG_USR_LIB_MASSSTORAGE_CFLAGS=" -I../../libs/massstorage/api "
+CONFIG_USR_LIB_AES=y
+CONFIG_USR_LIB_AES_CFLAGS=" -I../../libs/aes "
+
+#
+# libaes features
+#
+# CONFIG_USR_LIB_AES_SELFTESTS is not set
+# CONFIG_USR_LIB_AES_PERF is not set
+# CONFIG_USR_LIB_AES_ALGO_MBEDTLS is not set
+CONFIG_USR_LIB_AES_ALGO_ANSSI_MASKED=y
+# CONFIG_USR_LIB_AES_ALGO_ANSSI_UNMASKED is not set
+CONFIG_USR_LIB_AES_ALGO_CRYP_SUPPORT=y
+# CONFIG_USR_LIB_AES_ALGO_CRYP_SUPPORT_POLL is not set
+CONFIG_USR_LIB_AES_ALGO_CRYP_SUPPORT_DMA=y
+
+#
+# Libstd configuration
+#
+CONFIG_STD_MALLOC=y
+CONFIG_STD_MALLOC_LIGHT=y
+# CONFIG_STD_MALLOC_STD is not set
+# CONFIG_STD_MALLOC_BINS is not set
+CONFIG_STD_MALLOC_SIZE_LEN=16
+CONFIG_STD_MALLOC_ALIGN=1
+# CONFIG_STD_MALLOC_MUTEX is not set
+CONFIG_USR_LIB_DEBUG=y
+CONFIG_USR_LIB_DEBUG_CFLAGS=" -I../../libs/debug/api "
+CONFIG_USR_LIB_SD=y
+CONFIG_USR_LIB_SD_CFLAGS=" -I../../libs/sd/api "
+CONFIG_LIB_CFLAGS=" $(CONFIG_USR_LIB_CONSOLE_CFLAGS) $(CONFIG_USR_LIB_SHELL_CFLAGS) $(CONFIG_USR_LIB_HMAC_CFLAGS) $(CONFIG_USR_LIB_MASSSTORAGE_CFLAGS) $(CONFIG_USR_LIB_AES_CFLAGS) $(CONFIG_USR_LIB_STD_CFLAGS) $(CONFIG_USR_LIB_DEBUG_CFLAGS) $(CONFIG_USR_LIB_SD_CFLAGS) -I../../libs/std"
+# CONFIG_LIB_OPTIM_NONE is not set
+# CONFIG_LIB_OPTIM_PERF1 is not set
+# CONFIG_LIB_OPTIM_PERF2 is not set
+# CONFIG_LIB_OPTIM_PERF3 is not set
+CONFIG_LIB_OPTIM_SIZE=y
+CONFIG_LIB_OPTIM_CFLAGS="-Os"
+
+#
+# Applications
+#
+
+#
+# Configuring Applications
+#
+
+#
+# USB custom app
+#
+CONFIG_APP_USB=y
+CONFIG_APP_USB_FW=y
+CONFIG_APP_USB_NUMSLOTS=2
+CONFIG_APP_USB_STACKSIZE=6800
+# CONFIG_APP_USB_SHM is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_USB_PERM_DEV_DMA=y
+CONFIG_APP_USB_PERM_DEV_CRYPTO=0
+CONFIG_APP_USB_PERM_DEV_BUSES=y
+# CONFIG_APP_USB_PERM_DEV_EXTI is not set
+# CONFIG_APP_USB_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_USB_PERM_TIM_GETCYCLES=3
+
+#
+# Tasking
+#
+CONFIG_APP_USB_PERM_TSK_FISR=y
+# CONFIG_APP_USB_PERM_TSK_FIPC is not set
+# CONFIG_APP_USB_PERM_TSK_RESET is not set
+# CONFIG_APP_USB_PERM_TSK_UPGRADE is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_USB_PERM_MEM_DYNAMIC_MAP is not set
+
+#
+# PIN custom app
+#
+CONFIG_APP_PIN=y
+CONFIG_APP_PIN_FW=y
+CONFIG_APP_PIN_NUMSLOTS=1
+CONFIG_APP_PIN_STACKSIZE=8192
+# CONFIG_APP_PIN_SHM is not set
+CONFIG_APP_PIN_INPUT_USART=y
+# CONFIG_APP_PIN_INPUT_SCREEN is not set
+CONFIG_APP_PIN_INPUT_USART_ID=4
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_PIN_PERM_DEV_DMA=y
+CONFIG_APP_PIN_PERM_DEV_CRYPTO=0
+CONFIG_APP_PIN_PERM_DEV_BUSES=y
+# CONFIG_APP_PIN_PERM_DEV_EXTI is not set
+# CONFIG_APP_PIN_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_PIN_PERM_TIM_GETCYCLES=1
+
+#
+# Tasking
+#
+# CONFIG_APP_PIN_PERM_TSK_FISR is not set
+# CONFIG_APP_PIN_PERM_TSK_FIPC is not set
+# CONFIG_APP_PIN_PERM_TSK_RESET is not set
+# CONFIG_APP_PIN_PERM_TSK_UPGRADE is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_PIN_PERM_MEM_DYNAMIC_MAP is not set
+CONFIG_APP_PIN_DOMAIN=0
+
+#
+# SMART custom app
+#
+CONFIG_APP_SMART=y
+CONFIG_APP_SMART_FW=y
+CONFIG_APP_SMART_NUMSLOTS=2
+CONFIG_APP_SMART_STACKSIZE=8192
+CONFIG_APP_SMART_PRIO=1
+# CONFIG_APP_SMART_SHM is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_SMART_PERM_DEV_DMA=y
+CONFIG_APP_SMART_PERM_DEV_CRYPTO=2
+CONFIG_APP_SMART_PERM_DEV_BUSES=y
+CONFIG_APP_SMART_PERM_DEV_EXTI=y
+# CONFIG_APP_SMART_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_SMART_PERM_TIM_GETCYCLES=3
+
+#
+# Tasking
+#
+CONFIG_APP_SMART_PERM_TSK_FISR=y
+# CONFIG_APP_SMART_PERM_TSK_FIPC is not set
+CONFIG_APP_SMART_PERM_TSK_RESET=y
+# CONFIG_APP_SMART_PERM_TSK_UPGRADE is not set
+
+#
+# Memory management
+#
+CONFIG_APP_SMART_PERM_MEM_DYNAMIC_MAP=y
+
+#
+# CRYPTO custom app
+#
+CONFIG_APP_CRYPTO=y
+CONFIG_APP_CRYPTO_FW=y
+CONFIG_APP_CRYPTO_NUMSLOTS=1
+CONFIG_APP_CRYPTO_STACKSIZE=8192
+# CONFIG_APP_CRYPTO_SHM is not set
+# CONFIG_APP_CRYPTO_USE_GETCYCLES is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_CRYPTO_PERM_DEV_DMA=y
+CONFIG_APP_CRYPTO_PERM_DEV_CRYPTO=1
+# CONFIG_APP_CRYPTO_PERM_DEV_BUSES is not set
+# CONFIG_APP_CRYPTO_PERM_DEV_EXTI is not set
+# CONFIG_APP_CRYPTO_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_CRYPTO_PERM_TIM_GETCYCLES=2
+
+#
+# Tasking
+#
+CONFIG_APP_CRYPTO_PERM_TSK_FISR=y
+# CONFIG_APP_CRYPTO_PERM_TSK_FIPC is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_CRYPTO_PERM_MEM_DYNAMIC_MAP is not set
+CONFIG_APP_CRYPTO_OPTIM_NONE=y
+# CONFIG_APP_CRYPTO_OPTIM_O1 is not set
+# CONFIG_APP_CRYPTO_OPTIM_O2 is not set
+# CONFIG_APP_CRYPTO_OPTIM_O3 is not set
+# CONFIG_APP_CRYPTO_OPTIM_OS is not set
+CONFIG_APP_CRYPTO_CFLAGS=""
+
+#
+# SDIO custom app
+#
+CONFIG_APP_SDIO=y
+CONFIG_APP_SDIO_FW=y
+CONFIG_APP_SDIO_NUMSLOTS=1
+CONFIG_APP_SDIO_STACKSIZE=6800
+# CONFIG_APP_SDIO_SHM is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_SDIO_PERM_DEV_DMA=y
+CONFIG_APP_SDIO_PERM_DEV_CRYPTO=0
+CONFIG_APP_SDIO_PERM_DEV_BUSES=y
+# CONFIG_APP_SDIO_PERM_DEV_EXTI is not set
+CONFIG_APP_SDIO_PERM_DEV_TIM=y
+
+#
+# Time
+#
+CONFIG_APP_SDIO_PERM_TIM_GETCYCLES=3
+
+#
+# Tasking
+#
+CONFIG_APP_SDIO_PERM_TSK_FISR=y
+# CONFIG_APP_SDIO_PERM_TSK_FIPC is not set
+# CONFIG_APP_SDIO_PERM_TSK_RESET is not set
+# CONFIG_APP_SDIO_PERM_TSK_UPGRADE is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_SDIO_PERM_MEM_DYNAMIC_MAP is not set
+
+#
+# Configuring communication permissions for appliations
+#
+
+#
+# Applications IPC and SHM
+#
+CONFIG_NEED_IPC=y
+CONFIG_IPC=y
+
+#
+# --------- SDIO  USB CRYPTO SMART PIN
+#
+
+#
+# SDIO       [#]  [ ]  [1]    [ ]  [ ]
+#
+
+#
+# USB        [ ]  [#]  [1]    [ ]  [ ]
+#
+
+#
+# CRYPTO     [1]  [1]  [#]    [1]  [ ]
+#
+
+#
+# SMART      [ ]  [ ]  [1]    [#]  [1]
+#
+
+#
+# PIN        [ ]  [ ]  [ ]    [1]  [#]
+#
+CONFIG_DMA_SHM=y
+
+#
+# --------- SDIO  USB CRYPTO SMART PIN
+#
+
+#
+# SDIO       [#]  [ ]  [1]   [ ]  [ ]
+#
+
+#
+# USB        [ ]  [#]  [1]   [ ]  [ ]
+#
+
+#
+# CRYPTO     [1]  [1]  [#]   [ ]  [ ]
+#
+
+#
+# SMART      [ ]  [ ]  [ ]   [#]  [ ]
+#
+
+#
+# PIN        [ ]  [ ]  [ ]   [ ]  [#]
+#
+CONFIG_SHM=y
+CONFIG_FIRMWARE=y
+
+#
+# External tooling and libs
+#
+CONFIG_EXTERNALS=y
+CONFIG_USR_LIB_SIGN=y
+CONFIG_USR_LIB_SIGN_CFLAGS=" -I../../externals/libecc/src "
+
+#
+# libsign features
+#
+CONFIG_ECC_CURVENAME_FR256=y
+# CONFIG_ECC_CURVENAME_SP256 is not set
+# CONFIG_ECC_CURVENAME_SP384 is not set
+# CONFIG_ECC_CURVENAME_SP521 is not set
+# CONFIG_ECC_CURVENAME_BP256 is not set
+# CONFIG_ECC_CURVENAME_BP384 is not set
+# CONFIG_ECC_CURVENAME_BP512 is not set
+# CONFIG_ECC_CURVENAME_GT256 is not set
+# CONFIG_ECC_CURVENAME_GT512 is not set
+CONFIG_ECC_CURVNAME="FRP256V1"
+CONFIG_ECC_SIGNAME_ECDSA=y
+# CONFIG_ECC_SIGNAME_ECKCDSA is not set
+# CONFIG_ECC_SIGNAME_ECSDSA is not set
+# CONFIG_ECC_SIGNAME_ECOSDSA is not set
+# CONFIG_ECC_SIGNAME_ECFSDSA is not set
+# CONFIG_ECC_SIGNAME_ECGDSA is not set
+# CONFIG_ECC_SIGNAME_ECRDSA is not set
+CONFIG_ECC_SIGNAME="ECDSA"
+# CONFIG_ECC_HASHNAME_SHA224 is not set
+CONFIG_ECC_HASHNAME_SHA256=y
+# CONFIG_ECC_HASHNAME_SHA384 is not set
+# CONFIG_ECC_HASHNAME_SHA512 is not set
+# CONFIG_ECC_HASHNAME_SHA3_224 is not set
+# CONFIG_ECC_HASHNAME_SHA3_256 is not set
+# CONFIG_ECC_HASHNAME_SHA3_384 is not set
+# CONFIG_ECC_HASHNAME_SHA3_512 is not set
+CONFIG_ECC_HASHNAME="SHA256"
+
+#
+# Javacard
+#
+CONFIG_JAVACARD_PET_PIN=456789
+CONFIG_JAVACARD_USER_PIN=12345678
+
+#
+# Firmware options
+#
+CONFIG_FIRMWARE_MODE_MONO_BANK=y
+# CONFIG_FIRMWARE_MODE_MONO_BANK_DFU is not set
+# CONFIG_FIRMWARE_MODE_DUAL_BANK is not set
+# CONFIG_FIRMWARE_MODE_DUAL_BANK_DFU is not set
+# CONFIG_FIRMWARE_DUALBANK is not set
+# CONFIG_FIRMWARE_DFU is not set
+
+#
+# Global compile options
+#
+# CONFIG_OPTIM_NONE is not set
+# CONFIG_OPTIM_PERF1 is not set
+# CONFIG_OPTIM_PERF2 is not set
+# CONFIG_OPTIM_PERF3 is not set
+CONFIG_OPTIM_SIZE=y
+CONFIG_DBGFLAGS="-g3 -fno-caller-saves -fno-cse-follow-jumps -fno-hoist-adjacent-loads -fno-inline-small-functions -fno-optimize-sibling-calls -fno-peephole2 -fno-reorder-functions -fno-rerun-cse-after-loop -fno-tree-vrp -fno-reorder-blocks -fno-tree-vect-loop-version -finline-functions-called-once -fno-align-functions  -fno-align-jumps  -fno-align-loops -fno-align-labels -fno-reorder-blocks-and-partition  -fno-prefetch-loop-arrays -finline-functions-called-once -fipa-pure-const -fmerge-constants -Os"
+CONFIG_STACK_PROT_FLAG=y
+CONFIG_WARNFLAGS="-Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-but-set-variable -Wno-unused-function -Werror"
+CONFIG_EMBEDCFLAGS="-fno-builtin -nostdlib -D_FORTIFY_SOURCE=2"
+CONFIG_EC_UTILS="tools/ec_utils"
+CONFIG_DONE=y

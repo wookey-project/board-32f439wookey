@@ -13,10 +13,6 @@ CONFIG_HEX_NAME="$(CONFIG_PROJ_NAME).hex"
 CONFIG_ELF_NAME="$(CONFIG_PROJ_NAME).elf"
 CONFIG_BUILD_DIR="build"
 CONFIG_PRIVATE_DIR="private"
-CONFIG_CROSS_COMPILE="arm-none-eabi-"
-CONFIG_ADA_RUNTIME="/opt/adacore-arm-eabi"
-CONFIG_ST_FLASH="../stlink/build/st-flash"
-CONFIG_ST_UTIL="../stlink/build/st-util"
 
 #
 # Micro-Kernel configuration

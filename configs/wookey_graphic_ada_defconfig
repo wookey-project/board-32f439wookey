@@ -52,7 +52,7 @@ CONFIG_KERNEL_CONSOLE_TXT=y
 CONFIG_KERNEL_DMA_ENABLE=y
 CONFIG_KERNEL_GETCYCLES=y
 # CONFIG_KERNEL_DOMAIN is not set
-CONFIG_KERNEL_SOFTIRQ_QUEUE_DEPTH=32
+CONFIG_KERNEL_SOFTIRQ_QUEUE_DEPTH=64
 
 #
 # Scheduling schemes
@@ -533,52 +533,84 @@ CONFIG_NEED_IPC=y
 CONFIG_IPC=y
 
 #
-# --------- SDIO  USB CRYPTO SMART PIN
+# --------- SDIO  USB CRYPTO SMART PIN   DFU-USB   DFU-SMART  DFU-CRYP   FLASH
 #
 
 #
-# SDIO       [#]  [ ]  [1]    [ ]  [ ]
+# SDIO       [#]  [ ]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# USB        [ ]  [#]  [1]    [ ]  [ ]
+# USB        [ ]  [#]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# CRYPTO     [1]  [1]  [#]    [1]  [ ]
+# CRYPTO     [1]  [1]  [#]    [1]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# SMART      [ ]  [ ]  [1]    [#]  [1]
+# SMART      [ ]  [ ]  [1]    [#]  [1]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# PIN        [ ]  [ ]  [ ]    [1]  [#]
+# PIN        [ ]  [ ]  [ ]    [1]  [#]     [ ]       [ ]        [ ]       [ ]
+#
+
+#
+# DFU-USB    [ ]  [ ]  [ ]    [ ]  [ ]     [#]       [ ]        [1]       [ ]
+#
+
+#
+# DFU-SMART  [ ]  [ ]  [ ]    [ ]  [ ]     [ ]       [#]        [1]       [ ]
+#
+
+#
+# DFU-CRYP   [ ]  [ ]  [ ]    [ ]  [ ]     [1]       [1]        [#]       [1]
+#
+
+#
+# FLASH      [ ]  [ ]  [ ]    [ ]  [ ]     [ ]       [ ]        [1]       [#]
 #
 CONFIG_DMA_SHM=y
 
 #
-# --------- SDIO  USB CRYPTO SMART PIN
+# --------- SDIO  USB CRYPTO SMART PIN   DFU-USB   DFU-SMART  DFU-CRYP   FLASH
 #
 
 #
-# SDIO       [#]  [ ]  [1]   [ ]  [ ]
+# SDIO       [#]  [ ]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# USB        [ ]  [#]  [1]   [ ]  [ ]
+# USB        [ ]  [#]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# CRYPTO     [1]  [1]  [#]   [ ]  [ ]
+# CRYPTO     [1]  [1]  [#]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# SMART      [ ]  [ ]  [ ]   [#]  [ ]
+# SMART      [ ]  [ ]  [ ]    [#]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# PIN        [ ]  [ ]  [ ]   [ ]  [#]
+# PIN        [ ]  [ ]  [ ]    [ ]  [#]     [ ]       [ ]        [ ]       [ ]
+#
+
+#
+# DFU-USB    [ ]  [ ]  [ ]    [ ]  [ ]     [#]       [ ]        [1]       [ ]
+#
+
+#
+# DFU-SMART  [ ]  [ ]  [ ]    [ ]  [ ]     [ ]       [#]        [ ]       [ ]
+#
+
+#
+# DFU-CRYP   [ ]  [ ]  [ ]    [ ]  [ ]     [1]       [ ]        [#]       [1]
+#
+
+#
+# FLASH      [ ]  [ ]  [ ]    [ ]  [ ]     [ ]       [ ]        [1]       [#]
 #
 CONFIG_SHM=y
 CONFIG_FIRMWARE=y

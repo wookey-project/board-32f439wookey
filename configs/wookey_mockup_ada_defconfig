@@ -45,6 +45,10 @@ CONFIG_CORENAME="cortex-m4"
 CONFIG_MAXTASKS=8
 CONFIG_AFLAGS="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
 CONFIG_ADAKERNEL=y
+# CONFIG_KERNEL_NOSERIAL is not set
+CONFIG_KERNEL_PANIC_FREEZE=y
+# CONFIG_KERNEL_PANIC_REBOOT is not set
+# CONFIG_KERNEL_PANIC_WIPE is not set
 CONFIG_KERNEL_CONSOLE_USART1=y
 # CONFIG_KERNEL_CONSOLE_USART6 is not set
 CONFIG_KERNEL_USART=1
@@ -52,7 +56,6 @@ CONFIG_KERNEL_CONSOLE_TXT=y
 CONFIG_KERNEL_DMA_ENABLE=y
 CONFIG_KERNEL_GETCYCLES=y
 # CONFIG_KERNEL_DOMAIN is not set
-CONFIG_KERNEL_SOFTIRQ_QUEUE_DEPTH=32
 
 #
 # Scheduling schemes
@@ -73,6 +76,7 @@ CONFIG_KERN_CFLAGS="-Os"
 #
 # Kernel hacking
 #
+CONFIG_KERNEL_SOFTIRQ_QUEUE_DEPTH=128
 CONFIG_DBGLEVEL=6
 CONFIG_DEBUG=y
 CONFIG_KERNEL_SCHED_DEBUG=y
@@ -201,11 +205,53 @@ CONFIG_LIB_OPTIM_CFLAGS="-Os"
 #
 
 #
+# DFUUSB custom app
+#
+CONFIG_APP_DFUUSB=y
+# CONFIG_APP_DFUUSB_FW is not set
+CONFIG_APP_DFUUSB_DFU=y
+CONFIG_APP_DFUUSB_NUMSLOTS=1
+CONFIG_APP_DFUUSB_STACKSIZE=8192
+# CONFIG_APP_DFUUSB_SHM is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_DFUUSB_PERM_DEV_DMA=y
+CONFIG_APP_DFUUSB_PERM_DEV_CRYPTO=0
+CONFIG_APP_DFUUSB_PERM_DEV_BUSES=y
+# CONFIG_APP_DFUUSB_PERM_DEV_EXTI is not set
+# CONFIG_APP_DFUUSB_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_DFUUSB_PERM_TIM_GETCYCLES=1
+
+#
+# Tasking
+#
+CONFIG_APP_DFUUSB_PERM_TSK_FISR=y
+# CONFIG_APP_DFUUSB_PERM_TSK_FIPC is not set
+# CONFIG_APP_DFUUSB_PERM_TSK_RESET is not set
+# CONFIG_APP_DFUUSB_PERM_TSK_UPGRADE is not set
+# CONFIG_APP_DFUUSB_PERM_TSK_RNG is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_DFUUSB_PERM_MEM_DYNAMIC_MAP is not set
+
+#
 # USB custom app
 #
 CONFIG_APP_USB=y
 CONFIG_APP_USB_FW=y
-CONFIG_APP_USB_DFU=y
+# CONFIG_APP_USB_DFU is not set
 CONFIG_APP_USB_NUMSLOTS=2
 CONFIG_APP_USB_STACKSIZE=6800
 # CONFIG_APP_USB_SHM is not set
@@ -243,14 +289,98 @@ CONFIG_APP_USB_PERM_TSK_RNG=y
 # CONFIG_APP_USB_PERM_MEM_DYNAMIC_MAP is not set
 
 #
+# DFUSMART custom app
+#
+CONFIG_APP_DFUSMART=y
+# CONFIG_APP_DFUSMART_FW is not set
+CONFIG_APP_DFUSMART_DFU=y
+CONFIG_APP_DFUSMART_NUMSLOTS=3
+CONFIG_APP_DFUSMART_STACKSIZE=8192
+CONFIG_APP_DFUSMART_PRIO=2
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_DFUSMART_PERM_DEV_DMA=y
+CONFIG_APP_DFUSMART_PERM_DEV_CRYPTO=2
+CONFIG_APP_DFUSMART_PERM_DEV_BUSES=y
+CONFIG_APP_DFUSMART_PERM_DEV_EXTI=y
+# CONFIG_APP_DFUSMART_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_DFUSMART_PERM_TIM_GETCYCLES=3
+
+#
+# Tasking
+#
+CONFIG_APP_DFUSMART_PERM_TSK_FISR=y
+# CONFIG_APP_DFUSMART_PERM_TSK_FIPC is not set
+CONFIG_APP_DFUSMART_PERM_TSK_RESET=y
+# CONFIG_APP_DFUSMART_PERM_TSK_UPGRADE is not set
+CONFIG_APP_DFUSMART_PERM_TSK_RNG=y
+
+#
+# Memory management
+#
+# CONFIG_APP_DFUSMART_PERM_MEM_DYNAMIC_MAP is not set
+
+#
+# DFUFLASH custom app
+#
+CONFIG_APP_DFUFLASH=y
+# CONFIG_APP_DFUFLASH_FW is not set
+CONFIG_APP_DFUFLASH_DFU=y
+CONFIG_APP_DFUFLASH_NUMSLOTS=1
+CONFIG_APP_DFUFLASH_STACKSIZE=8192
+# CONFIG_APP_DFUFLASH_SHM is not set
+
+#
+# Permissions
+#
+
+#
+# Devices
+#
+CONFIG_APP_DFUFLASH_PERM_DEV_DMA=y
+CONFIG_APP_DFUFLASH_PERM_DEV_CRYPTO=0
+CONFIG_APP_DFUFLASH_PERM_DEV_BUSES=y
+# CONFIG_APP_DFUFLASH_PERM_DEV_EXTI is not set
+# CONFIG_APP_DFUFLASH_PERM_DEV_TIM is not set
+
+#
+# Time
+#
+CONFIG_APP_DFUFLASH_PERM_TIM_GETCYCLES=2
+
+#
+# Tasking
+#
+# CONFIG_APP_DFUFLASH_PERM_TSK_FISR is not set
+# CONFIG_APP_DFUFLASH_PERM_TSK_FIPC is not set
+# CONFIG_APP_DFUFLASH_PERM_TSK_RESET is not set
+CONFIG_APP_DFUFLASH_PERM_TSK_UPGRADE=y
+# CONFIG_APP_DFUFLASH_PERM_TSK_RNG is not set
+
+#
+# Memory management
+#
+# CONFIG_APP_DFUFLASH_PERM_MEM_DYNAMIC_MAP is not set
+
+#
 # PIN custom app
 #
 CONFIG_APP_PIN=y
 CONFIG_APP_PIN_FW=y
-# CONFIG_APP_PIN_DFU is not set
+CONFIG_APP_PIN_DFU=y
 CONFIG_APP_PIN_NUMSLOTS=1
 CONFIG_APP_PIN_STACKSIZE=8192
-CONFIG_APP_PIN_PRIO=2
+CONFIG_APP_PIN_PRIO=1
 
 #
 # Pin specific properties
@@ -308,7 +438,7 @@ CONFIG_APP_SMART_FW=y
 # CONFIG_APP_SMART_DFU is not set
 CONFIG_APP_SMART_NUMSLOTS=2
 CONFIG_APP_SMART_STACKSIZE=8192
-CONFIG_APP_SMART_PRIO=1
+CONFIG_APP_SMART_PRIO=2
 # CONFIG_APP_SMART_SHM is not set
 
 #
@@ -344,73 +474,46 @@ CONFIG_APP_SMART_PERM_TSK_RNG=y
 CONFIG_APP_SMART_PERM_MEM_DYNAMIC_MAP=y
 
 #
-# DFUSMART custom app
+# DFUCRYPTO custom app
 #
-# CONFIG_APP_DFUSMART is not set
+CONFIG_APP_DFUCRYPTO=y
+# CONFIG_APP_DFUCRYPTO_FW is not set
+CONFIG_APP_DFUCRYPTO_DFU=y
+CONFIG_APP_DFUCRYPTO_NUMSLOTS=1
+CONFIG_APP_DFUCRYPTO_STACKSIZE=8192
+# CONFIG_APP_DFUCRYPTO_SHM is not set
+
+#
+# Permissions
+#
 
 #
 # Devices
 #
-CONFIG_APP_DFUSMART_PERM_DEV_CRYPTO=0
+CONFIG_APP_DFUCRYPTO_PERM_DEV_DMA=y
+CONFIG_APP_DFUCRYPTO_PERM_DEV_CRYPTO=1
+# CONFIG_APP_DFUCRYPTO_PERM_DEV_BUSES is not set
+# CONFIG_APP_DFUCRYPTO_PERM_DEV_EXTI is not set
+# CONFIG_APP_DFUCRYPTO_PERM_DEV_TIM is not set
 
 #
 # Time
 #
-CONFIG_APP_DFUSMART_PERM_TIM_GETCYCLES=0
+CONFIG_APP_DFUCRYPTO_PERM_TIM_GETCYCLES=2
 
 #
 # Tasking
 #
+CONFIG_APP_DFUCRYPTO_PERM_TSK_FISR=y
+# CONFIG_APP_DFUCRYPTO_PERM_TSK_FIPC is not set
+# CONFIG_APP_DFUCRYPTO_PERM_TSK_RESET is not set
+# CONFIG_APP_DFUCRYPTO_PERM_TSK_UPGRADE is not set
+CONFIG_APP_DFUCRYPTO_PERM_TSK_RNG=y
 
 #
 # Memory management
 #
-
-#
-# FLASH custom app
-#
-# CONFIG_APP_FLASH is not set
-
-#
-# Devices
-#
-CONFIG_APP_FLASH_PERM_DEV_CRYPTO=0
-
-#
-# Time
-#
-CONFIG_APP_FLASH_PERM_TIM_GETCYCLES=0
-
-#
-# Tasking
-#
-
-#
-# Memory management
-#
-
-#
-# DFUCRYP custom app
-#
-# CONFIG_APP_DFUCRYP is not set
-
-#
-# Devices
-#
-CONFIG_APP_DFUCRYP_PERM_DEV_CRYPTO=0
-
-#
-# Time
-#
-CONFIG_APP_DFUCRYP_PERM_TIM_GETCYCLES=0
-
-#
-# Tasking
-#
-
-#
-# Memory management
-#
+# CONFIG_APP_DFUCRYPTO_PERM_MEM_DYNAMIC_MAP is not set
 
 #
 # CRYPTO custom app
@@ -462,34 +565,11 @@ CONFIG_APP_CRYPTO_OPTIM_NONE=y
 CONFIG_APP_CRYPTO_CFLAGS=""
 
 #
-# DFUUSB custom app
-#
-# CONFIG_APP_DFUUSB is not set
-
-#
-# Devices
-#
-CONFIG_APP_DFUUSB_PERM_DEV_CRYPTO=0
-
-#
-# Time
-#
-CONFIG_APP_DFUUSB_PERM_TIM_GETCYCLES=0
-
-#
-# Tasking
-#
-
-#
-# Memory management
-#
-
-#
 # SDIO custom app
 #
 CONFIG_APP_SDIO=y
 CONFIG_APP_SDIO_FW=y
-CONFIG_APP_SDIO_DFU=y
+# CONFIG_APP_SDIO_DFU is not set
 CONFIG_APP_SDIO_NUMSLOTS=2
 CONFIG_APP_SDIO_STACKSIZE=6800
 # CONFIG_APP_SDIO_SHM is not set
@@ -537,52 +617,84 @@ CONFIG_NEED_IPC=y
 CONFIG_IPC=y
 
 #
-# --------- SDIO  USB CRYPTO SMART PIN
+# --------- SDIO  USB CRYPTO SMART PIN   DFUUSB   DFUSMART     DFUCRYPTO DFUFLASH
 #
 
 #
-# SDIO       [#]  [ ]  [1]    [ ]  [ ]
+# SDIO       [#]  [ ]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# USB        [ ]  [#]  [1]    [ ]  [ ]
+# USB        [ ]  [#]  [1]    [ ]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# CRYPTO     [1]  [1]  [#]    [1]  [ ]
+# CRYPTO     [1]  [1]  [#]    [1]  [ ]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# SMART      [ ]  [ ]  [1]    [#]  [1]
+# SMART      [ ]  [ ]  [1]    [#]  [1]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
-# PIN        [ ]  [ ]  [ ]    [1]  [#]
+# PIN        [ ]  [ ]  [ ]    [1]  [#]     [ ]       [1]        [ ]       [ ]
+#
+
+#
+# DFUUSB     [ ]  [ ]  [ ]    [ ]  [ ]     [#]       [ ]        [1]       [ ]
+#
+
+#
+# DFUSMART   [ ]  [ ]  [ ]    [ ]  [1]     [ ]       [#]        [1]       [ ]
+#
+
+#
+# DFUCRYPTO  [ ]  [ ]  [ ]    [ ]  [ ]     [1]       [1]        [#]       [1]
+#
+
+#
+# DFUFLASH   [ ]  [ ]  [ ]    [ ]  [ ]     [ ]       [ ]        [1]       [#]
 #
 CONFIG_DMA_SHM=y
 
 #
-# --------- SDIO  USB CRYPTO SMART PIN
+# --------- SDIO  USB CRYPTO SMART PIN   DFUUSB   DFUSMART  DFUCRYPTO DFUFLASH
 #
 
 #
-# SDIO       [#]  [ ]  [1]   [ ]  [ ]
+# SDIO       [#]  [ ]  [1]    [ ]  [ ]     [ ]      [ ]       [ ]       [ ]
 #
 
 #
-# USB        [ ]  [#]  [1]   [ ]  [ ]
+# USB        [ ]  [#]  [1]    [ ]  [ ]     [ ]      [ ]       [ ]       [ ]
 #
 
 #
-# CRYPTO     [1]  [1]  [#]   [ ]  [ ]
+# CRYPTO     [1]  [1]  [#]    [ ]  [ ]     [ ]      [ ]       [ ]       [ ]
 #
 
 #
-# SMART      [ ]  [ ]  [ ]   [#]  [ ]
+# SMART      [ ]  [ ]  [ ]    [#]  [ ]     [ ]      [ ]       [ ]       [ ]
 #
 
 #
-# PIN        [ ]  [ ]  [ ]   [ ]  [#]
+# PIN        [ ]  [ ]  [ ]    [ ]  [#]     [ ]      [ ]       [ ]       [ ]
+#
+
+#
+# DFUUSB     [ ]  [ ]  [ ]    [ ]  [ ]     [#]      [ ]       [1]       [ ]
+#
+
+#
+# DFUSMART   [ ]  [ ]  [ ]    [ ]  [ ]     [ ]      [#]       [ ]       [ ]
+#
+
+#
+# DFUCRYP    [ ]  [ ]  [ ]    [ ]  [ ]     [1]      [ ]       [#]       [1]
+#
+
+#
+# DFUFLASH   [ ]  [ ]  [ ]    [ ]  [ ]     [ ]      [ ]       [1]       [#]
 #
 CONFIG_SHM=y
 CONFIG_FIRMWARE=y
@@ -616,7 +728,7 @@ CONFIG_AES256_CBC_ESSIV=y
 #
 # Secure tokens configuration
 #
-CONFIG_USE_DIFFERENT_PHYSICAL_TOKENS=y
+# CONFIG_USE_DIFFERENT_PHYSICAL_TOKENS is not set
 
 #
 # AUTH token

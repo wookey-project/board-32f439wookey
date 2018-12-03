@@ -43,7 +43,8 @@ CONFIG_BOARDNAME="wookey"
 CONFIG_SOCNAME="stm32f439"
 CONFIG_CORENAME="cortex-m4"
 CONFIG_MAXTASKS=8
-CONFIG_AFLAGS="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
+CONFIG_AFLAGS_GCC="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
+CONFIG_AFLAGS_LLVM="--target=thumbv7m-none-eabi -mcpu=cortex-m4 -m32 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -fPIC -fpie"
 CONFIG_ADAKERNEL=y
 # CONFIG_KERNEL_NOSERIAL is not set
 CONFIG_KERNEL_PANIC_FREEZE=y
@@ -83,6 +84,11 @@ CONFIG_KERNEL_SCHED_DEBUG=y
 CONFIG_KERNEL_SCHED_DEBUG_BUFSIZE=1000
 CONFIG_KERNEL_EXPERT_MODE=y
 CONFIG_KERNEL_EWOK=y
+
+#
+# Bootloader configuration
+#
+# CONFIG_LOADER_MOCKUP is not set
 
 #
 # Userspace drivers and features
@@ -142,6 +148,8 @@ CONFIG_USR_LIB_CONSOLE=y
 CONFIG_USR_LIB_CONSOLE_CFLAGS=" -I../../libs/console/api "
 CONFIG_USR_LIB_SHELL=y
 CONFIG_USR_LIB_SHELL_CFLAGS=" -I../../libs/shell/api "
+CONFIG_USR_LIB_DFU=y
+CONFIG_USR_LIB_DFU_CFLAGS=" -I../../libs/dfu/api "
 CONFIG_USR_LIB_HMAC=y
 CONFIG_USR_LIB_HMAC_CFLAGS=" -I../../libs/hmac "
 CONFIG_USR_LIB_MASSSTORAGE=y
@@ -150,6 +158,7 @@ CONFIG_USR_LIB_SMARTCARD=y
 CONFIG_USR_LIB_SMARTCARD_CFLAGS=" -I../../libs/smartcard/api "
 CONFIG_USR_LIB_TOKEN=y
 CONFIG_USR_LIB_TOKEN_CFLAGS=" -I../../libs/token/api "
+# CONFIG_SMARTCARD_DEBUG is not set
 CONFIG_USR_LIB_AES=y
 CONFIG_USR_LIB_AES_CFLAGS=" -I../../libs/aes "
 
@@ -244,7 +253,7 @@ CONFIG_APP_DFUUSB_PERM_TSK_FISR=y
 #
 # Memory management
 #
-# CONFIG_APP_DFUUSB_PERM_MEM_DYNAMIC_MAP is not set
+CONFIG_APP_DFUUSB_PERM_MEM_DYNAMIC_MAP=y
 
 #
 # USB custom app
@@ -396,6 +405,10 @@ CONFIG_APP_PIN_MOCKUP_USER_PIN_VALUE="1337"
 CONFIG_APP_PIN_MOCKUP_USER_PIN_LEN=4
 CONFIG_APP_PIN_MOCKUP_PET_PIN_VALUE="1234"
 CONFIG_APP_PIN_MOCKUP_PET_PIN_LEN=4
+CONFIG_APP_PIN_MOCKUP_DFU_USER_PIN_VALUE="1234"
+CONFIG_APP_PIN_MOCKUP_DFU_USER_PIN_LEN=4
+CONFIG_APP_PIN_MOCKUP_DFU_PET_PIN_VALUE="1234"
+CONFIG_APP_PIN_MOCKUP_DFU_PET_PIN_LEN=4
 
 #
 # Permissions
@@ -776,9 +789,11 @@ CONFIG_FIRMWARE_DFU=y
 # CONFIG_OPTIM_PERF2 is not set
 # CONFIG_OPTIM_PERF3 is not set
 CONFIG_OPTIM_SIZE=y
-CONFIG_DBGFLAGS="-g3 -fno-caller-saves -fno-cse-follow-jumps -fno-hoist-adjacent-loads -fno-inline-small-functions -fno-optimize-sibling-calls -fno-peephole2 -fno-reorder-functions -fno-rerun-cse-after-loop -fno-tree-vrp -fno-reorder-blocks -fno-tree-vect-loop-version -finline-functions-called-once -fno-align-functions  -fno-align-jumps  -fno-align-loops -fno-align-labels -fno-reorder-blocks-and-partition  -fno-prefetch-loop-arrays -finline-functions-called-once -fipa-pure-const -fmerge-constants -Os"
+CONFIG_DBGFLAGS_GCC="-g3 -fno-caller-saves -fno-cse-follow-jumps -fno-hoist-adjacent-loads -fno-inline-small-functions -fno-optimize-sibling-calls -fno-peephole2 -fno-reorder-functions -fno-rerun-cse-after-loop -fno-tree-vrp -fno-reorder-blocks -fno-tree-vect-loop-version -finline-functions-called-once -fno-align-functions  -fno-align-jumps  -fno-align-loops -fno-align-labels -fno-reorder-blocks-and-partition  -fno-prefetch-loop-arrays -finline-functions-called-once -fipa-pure-const -fmerge-constants -Os"
+CONFIG_DBGFLAGS_LLVM="-g3 -Os"
 CONFIG_STACK_PROT_FLAG=y
-CONFIG_WARNFLAGS="-Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-but-set-variable -Wno-unused-function -Werror"
+CONFIG_WARNFLAGS_GCC="-Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-but-set-variable -Wno-unused-function -Werror"
+CONFIG_WARNFLAGS_LLVM="-fintegrated-as -fno-builtin -Wno-error=unused-command-line-argument -Wno-incompatible-library-redeclaration -Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-function -Werror"
 CONFIG_EMBEDCFLAGS="-fno-builtin -nostdlib -D_FORTIFY_SOURCE=2"
 CONFIG_EC_UTILS="tools/ec_utils"
 CONFIG_DONE=y

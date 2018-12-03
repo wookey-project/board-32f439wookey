@@ -88,7 +88,8 @@ CONFIG_KERNEL_EWOK=y
 #
 # Bootloader configuration
 #
-# CONFIG_LOADER_MOCKUP is not set
+CONFIG_LOADER_MOCKUP=y
+CONFIG_LOADER_MOCKUP_DFU=y
 
 #
 # Userspace drivers and features

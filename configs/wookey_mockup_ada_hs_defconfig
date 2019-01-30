@@ -93,6 +93,7 @@ CONFIG_KERNEL_EWOK=y
 # Bootloader configuration
 #
 # CONFIG_LOADER_MOCKUP is not set
+CONFIG_LOADER_FW_HASH_CHECK=y
 
 #
 # Userspace drivers and features
@@ -102,7 +103,6 @@ CONFIG_KERNEL_EWOK=y
 # Userspace drivers library pool
 #
 CONFIG_USR_DRV_USB=y
-CONFIG_USR_DRV_USB_CFLAGS=" -I../../drivers/socs/stm32f439/usb/api "
 
 #
 # USB-related features
@@ -119,11 +119,8 @@ CONFIG_USB_DEV_SERIAL_INDEX=3
 CONFIG_USB_DEV_VENDORID=0xDEAD
 CONFIG_USB_DEV_PRODUCTID=0xCAFE
 CONFIG_USR_DRV_ISO7816=y
-CONFIG_USR_DRV_ISO7816_CFLAGS=" -I../../drivers/socs/stm32f439/iso7816/api "
 CONFIG_USR_DRV_USART=y
-CONFIG_USR_DRV_USART_CFLAGS=" -I../../drivers/socs/stm32f439/usart/api "
 CONFIG_USR_DRV_SPI=y
-CONFIG_USR_DRV_SPI_CFLAGS=" -I../../drivers/socs/stm32f439/spi/api "
 
 #
 # SPI block configuration
@@ -133,26 +130,30 @@ CONFIG_SPI2=y
 CONFIG_SPI3=y
 # CONFIG_SPI4 is not set
 CONFIG_USR_DRV_FLASH=y
-CONFIG_USR_DRV_FLASH_CFLAGS=" -I../../drivers/socs/stm32f439/flash/api "
 
 #
 # Flash driver options
 #
 # CONFIG_USR_DRV_FLASH_1M is not set
 CONFIG_USR_DRV_FLASH_2M=y
-# CONFIG_USR_DRV_FLASH_SIGNLE_BANK is not set
+# CONFIG_USR_DRV_FLASH_SINGLE_BANK is not set
 CONFIG_USR_DRV_FLASH_DUAL_BANK=y
 CONFIG_USR_DRV_HASH=y
-CONFIG_USR_DRV_HASH_CFLAGS=" -I../../drivers/socs/stm32f439/hash/api "
 CONFIG_USR_DRV_SDIO=y
-CONFIG_USR_DRV_SDIO_CFLAGS=" -I../../drivers/socs/stm32f439/sdio/api "
 CONFIG_USR_DRV_CRYP=y
 # CONFIG_USR_DRV_CRYP_DEBUG is not set
-CONFIG_USR_DRV_CRYP_CFLAGS=" -I../../drivers/socs/stm32f439/cryp/api "
 CONFIG_USR_DRV_ILI9341=y
 CONFIG_USR_DRV_ILI9341_CFLAGS=" -I../../drivers/boards/wookey/ili9341/api "
 CONFIG_USR_DRV_AD7843=y
 CONFIG_USR_DRV_AD7843_CFLAGS=" -I../../drivers/boards/wookey/ad7843/api "
+CONFIG_USR_DRV_USB_CFLAGS=" -I../../drivers/socs/stm32f439/usb/api "
+CONFIG_USR_DRV_ISO7816_CFLAGS=" -I../../drivers/socs/stm32f439/iso7816/api "
+CONFIG_USR_DRV_USART_CFLAGS=" -I../../drivers/socs/stm32f439/usart/api "
+CONFIG_USR_DRV_SPI_CFLAGS=" -I../../drivers/socs/stm32f439/spi/api "
+CONFIG_USR_DRV_FLASH_CFLAGS=" -I../../drivers/socs/stm32f439/flash/api "
+CONFIG_USR_DRV_HASH_CFLAGS=" -I../../drivers/socs/stm32f439/hash/api "
+CONFIG_USR_DRV_SDIO_CFLAGS=" -I../../drivers/socs/stm32f439/sdio/api "
+CONFIG_USR_DRV_CRYP_CFLAGS=" -I../../drivers/socs/stm32f439/cryp/api "
 # CONFIG_DRV_OPTIM_NONE is not set
 # CONFIG_DRV_OPTIM_PERF1 is not set
 # CONFIG_DRV_OPTIM_PERF2 is not set
@@ -164,13 +165,9 @@ CONFIG_DRIVERS_CFLAGS="-Os"
 # Userspace utility libraries
 #
 CONFIG_USR_LIB_ISO7816=y
-CONFIG_USR_LIB_ISO7816_CFLAGS=" -I../../libs/iso7816/api "
 CONFIG_USR_LIB_CONSOLE=y
-CONFIG_USR_LIB_CONSOLE_CFLAGS=" -I../../libs/console/api "
 CONFIG_USR_LIB_SHELL=y
-CONFIG_USR_LIB_SHELL_CFLAGS=" -I../../libs/shell/api "
 CONFIG_USR_LIB_DFU=y
-CONFIG_USR_LIB_DFU_CFLAGS=" -I../../libs/dfu/api "
 
 #
 # DFU-Related Features
@@ -178,27 +175,21 @@ CONFIG_USR_LIB_DFU_CFLAGS=" -I../../libs/dfu/api "
 # CONFIG_USR_LIB_DFU_CAN_UPLOAD is not set
 CONFIG_USR_LIB_DFU_CAN_DOWNLOAD=y
 CONFIG_USR_LIB_FIRMWARE=y
-CONFIG_USR_LIB_FIRMWARE_CFLAGS=" -I../../libs/firmware/api "
 
 #
 # Firmware-Related Features
 #
 # CONFIG_USR_LIB_FIRWARE_SUPPORT_HW_HMAC is not set
 CONFIG_USR_LIB_HMAC=y
-CONFIG_USR_LIB_HMAC_CFLAGS=" -I../../libs/hmac "
 CONFIG_USR_LIB_MASSSTORAGE=y
-CONFIG_USR_LIB_MASSSTORAGE_CFLAGS=" -I../../libs/massstorage/api "
 CONFIG_USR_LIB_SMARTCARD=y
-CONFIG_USR_LIB_SMARTCARD_CFLAGS=" -I../../libs/smartcard/api "
 CONFIG_USR_LIB_TOKEN=y
-CONFIG_USR_LIB_TOKEN_CFLAGS=" -I../../libs/token/api "
 
 #
 # libtoken specific options
 #
 # CONFIG_SMARTCARD_DEBUG is not set
 CONFIG_USR_LIB_AES=y
-CONFIG_USR_LIB_AES_CFLAGS=" -I../../libs/aes "
 
 #
 # libaes features
@@ -222,11 +213,8 @@ CONFIG_STD_MALLOC_SIZE_LEN=16
 CONFIG_STD_MALLOC_ALIGN=1
 # CONFIG_STD_MALLOC_MUTEX is not set
 CONFIG_USR_LIB_DEBUG=y
-CONFIG_USR_LIB_DEBUG_CFLAGS=" -I../../libs/debug/api "
 CONFIG_USR_LIB_WOOKEY=y
-CONFIG_USR_LIB_WOOKEY_CFLAGS=" -I../../libs/wookey/api "
 CONFIG_USR_LIB_GUI=y
-CONFIG_USR_LIB_GUI_CFLAGS=" -I../../libs/gui/api "
 
 #
 # libgui configuration
@@ -234,6 +222,19 @@ CONFIG_USR_LIB_GUI_CFLAGS=" -I../../libs/gui/api "
 CONFIG_USR_LIB_GUI_MODE_FULL=y
 # CONFIG_USR_LIB_GUI_MODE_LITE is not set
 CONFIG_USR_LIB_SD=y
+CONFIG_USR_LIB_ISO7816_CFLAGS=" -I../../libs/iso7816/api "
+CONFIG_USR_LIB_CONSOLE_CFLAGS=" -I../../libs/console/api "
+CONFIG_USR_LIB_SHELL_CFLAGS=" -I../../libs/shell/api "
+CONFIG_USR_LIB_DFU_CFLAGS=" -I../../libs/dfu/api "
+CONFIG_USR_LIB_FIRMWARE_CFLAGS=" -I../../libs/firmware/api "
+CONFIG_USR_LIB_HMAC_CFLAGS=" -I../../libs/hmac/api "
+CONFIG_USR_LIB_MASSSTORAGE_CFLAGS=" -I../../libs/massstorage/api "
+CONFIG_USR_LIB_SMARTCARD_CFLAGS=" -I../../libs/smartcard/api "
+CONFIG_USR_LIB_TOKEN_CFLAGS=" -I../../libs/token/api "
+CONFIG_USR_LIB_AES_CFLAGS=" -I../../libs/aes/api "
+CONFIG_USR_LIB_DEBUG_CFLAGS=" -I../../libs/debug/api "
+CONFIG_USR_LIB_WOOKEY_CFLAGS=" -I../../libs/wookey/api "
+CONFIG_USR_LIB_GUI_CFLAGS=" -I../../libs/gui/api "
 CONFIG_USR_LIB_SD_CFLAGS=" -I../../libs/sd/api "
 # CONFIG_LIB_OPTIM_NONE is not set
 # CONFIG_LIB_OPTIM_PERF1 is not set
@@ -635,7 +636,7 @@ CONFIG_APP_SDIO_STACKSIZE=6800
 CONFIG_APP_SDIO_PERM_DEV_DMA=y
 CONFIG_APP_SDIO_PERM_DEV_CRYPTO=0
 CONFIG_APP_SDIO_PERM_DEV_BUSES=y
-# CONFIG_APP_SDIO_PERM_DEV_EXTI is not set
+CONFIG_APP_SDIO_PERM_DEV_EXTI=y
 CONFIG_APP_SDIO_PERM_DEV_TIM=y
 
 #

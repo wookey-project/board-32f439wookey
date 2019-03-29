@@ -44,15 +44,13 @@ CONFIG_ARCH_ARMV7M=y
 CONFIG_ARCH_CORTEX_M4=y
 # CONFIG_ARCH_CORTEX_M3 is not set
 CONFIG_ARCH="armv7-m"
-CONFIG_ADA_ARCH="arm-eabi"
-CONFIG_ADA_PROFILE="zfp-stm32f4"
 CONFIG_BOARDNAME="wookey"
 CONFIG_SOCNAME="stm32f439"
 CONFIG_CORENAME="cortex-m4"
 CONFIG_MAXTASKS=8
 CONFIG_AFLAGS_GCC="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
 CONFIG_AFLAGS_LLVM="--target=thumbv7m-none-eabi -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -fPIC -fpie"
-CONFIG_ADAKERNEL=y
+# CONFIG_ADAKERNEL is not set
 # CONFIG_KERNEL_NOSERIAL is not set
 CONFIG_KERNEL_PANIC_FREEZE=y
 # CONFIG_KERNEL_PANIC_REBOOT is not set
@@ -109,8 +107,8 @@ CONFIG_USR_DRV_USB=y
 #
 # USB-related features
 #
-CONFIG_USR_DRV_USB_FS=y
-# CONFIG_USR_DRV_USB_HS is not set
+# CONFIG_USR_DRV_USB_FS is not set
+CONFIG_USR_DRV_USB_HS=y
 CONFIG_USB_DFU=y
 CONFIG_USB_DEV_PRODNAME="goodusb"
 CONFIG_USB_DEV_PRODNAME_INDEX=1

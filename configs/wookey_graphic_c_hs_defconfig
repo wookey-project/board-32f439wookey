@@ -130,7 +130,6 @@ CONFIG_USR_DRV_SPI=y
 CONFIG_SPI1=y
 CONFIG_SPI1_ROLE_MASTER=y
 # CONFIG_SPI2 is not set
-# CONFIG_SPI2_ENABLE_DMA is not set
 # CONFIG_SPI3 is not set
 # CONFIG_SPI4 is not set
 CONFIG_USR_DRV_FLASH=y
@@ -190,6 +189,11 @@ CONFIG_USR_LIB_FIRMWARE_FLOP_BOOTINFO_ADDR=0x08108000
 CONFIG_USR_LIB_FIRMWARE_BANK_SIZE=0xe0000
 CONFIG_USR_LIB_HMAC=y
 CONFIG_USR_LIB_MASSSTORAGE=y
+
+#
+# SCSI options
+#
+CONFIG_USR_LIB_MASSSTORAGE_DEBUG=0
 CONFIG_USR_LIB_SMARTCARD=y
 CONFIG_USR_LIB_TOKEN=y
 
@@ -839,6 +843,6 @@ CONFIG_DBGFLAGS_LLVM="-ggdb -Os"
 CONFIG_STACK_PROT_FLAG=y
 CONFIG_WARNFLAGS_GCC="-Wl,--gc-sections -Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-but-set-variable -Wno-unused-function -Werror"
 CONFIG_WARNFLAGS_LLVM="-fintegrated-as -sed-command-line-argument -Wno-incompatible-library-redeclaration -Wall -Werror -Wextra -Wno-reserved-id-macro -Wno-padded -Wno-packed -Wno-covered-switch-default -Wno-used-but-marked-unused -Wno-unused-function -Werror"
-CONFIG_EMBEDCFLAGS="-Wl,--gc-sections -ffunction-sections -fno-builtin -ffreestanding -nolibc -nostdlib -nodefaultlibs -D_FORTIFY_SOURCE=2"
+CONFIG_EMBEDCFLAGS="-Wl,--gc-sections -ffunction-sections -fno-builtin -ffreestanding -nostdlib -nodefaultlibs -D_FORTIFY_SOURCE=2"
 CONFIG_EC_UTILS="tools/ec_utils"
 CONFIG_DONE=y

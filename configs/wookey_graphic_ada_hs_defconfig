@@ -53,6 +53,7 @@ CONFIG_MAXTASKS=8
 CONFIG_AFLAGS_GCC="-mlittle-endian -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fPIC -fpie"
 CONFIG_AFLAGS_LLVM="--target=thumbv7m-none-eabi -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -fPIC -fpie"
 CONFIG_ADAKERNEL=y
+# CONFIG_CKERNEL is not set
 # CONFIG_KERNEL_NOSERIAL is not set
 CONFIG_KERNEL_PANIC_FREEZE=y
 # CONFIG_KERNEL_PANIC_REBOOT is not set

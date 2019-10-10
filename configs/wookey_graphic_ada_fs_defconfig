@@ -700,7 +700,7 @@ CONFIG_IPC=y
 #
 
 #
-# CRYPTO     [1]  [1]  [#]    [1]  [ ]     [ ]       [ ]        [ ]       [ ]
+# CRYPTO     [1]  [1]  [#]    [1]  [1]     [ ]       [ ]        [ ]       [ ]
 #
 
 #
@@ -708,7 +708,7 @@ CONFIG_IPC=y
 #
 
 #
-# PIN        [ ]  [ ]  [ ]    [1]  [#]     [ ]       [1]        [ ]       [ ]
+# PIN        [ ]  [ ]  [1]    [1]  [#]     [ ]       [1]        [1]       [ ]
 #
 
 #
@@ -720,7 +720,7 @@ CONFIG_IPC=y
 #
 
 #
-# DFUCRYPTO  [ ]  [ ]  [ ]    [ ]  [ ]     [1]       [1]        [#]       [1]
+# DFUCRYPTO  [ ]  [ ]  [ ]    [ ]  [1]     [1]       [1]        [#]       [1]
 #
 
 #
@@ -803,14 +803,14 @@ CONFIG_AES256_CBC_ESSIV=y
 # Secure tokens configuration
 #
 CONFIG_APPLETS=y
-CONFIG_USE_DIFFERENT_PHYSICAL_TOKENS=y
+# CONFIG_USE_DIFFERENT_PHYSICAL_TOKENS is not set
 
 #
 # AUTH token
 #
 CONFIG_AUTH_TOKEN_PET_PIN=1234
-CONFIG_AUTH_TOKEN_PET_NAME="My dog name is Bob!"
-CONFIG_AUTH_TOKEN_USER_PIN=1234
+CONFIG_AUTH_TOKEN_PET_NAME="Woopy"
+CONFIG_AUTH_TOKEN_USER_PIN=1337
 CONFIG_AUTH_TOKEN_MAX_PIN=3
 CONFIG_AUTH_TOKEN_MAX_SC=10
 
